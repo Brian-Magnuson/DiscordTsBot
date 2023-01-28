@@ -22,7 +22,7 @@ module.exports = {
 				console.error(error);
 			}
 		} else if (interaction.isButton()) {
-			interaction.reply('A button was clicked');
+			interaction.reply(`${interaction.user.username} clicked the button!`);
 		} else {
 			return;
 		}
