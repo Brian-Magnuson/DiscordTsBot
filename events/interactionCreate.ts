@@ -2,7 +2,8 @@ import {
 	Events,
 	BaseInteraction,
 	ButtonInteraction,
-	ModalSubmitInteraction
+	ModalSubmitInteraction,
+	StringSelectMenuInteraction
 } from "discord.js";
 import ExtendedClient from "types/ExtendedClient";
 
@@ -34,6 +35,18 @@ module.exports = {
 				interaction.reply(`${interaction.user.username} clicked the button.`)
 			} else {
 				console.log(`[WARNING]: No button interaction handler exists for ${customId}`)
+			}
+
+			// STRING SELECT MENU COMMANDS
+		} else if (interaction.isStringSelectMenu()) {
+			const customId = (interaction as StringSelectMenuInteraction).customId;
+
+			// Branch on menu's customId
+			if (customId == 'select') {
+				const selected = interaction.values[0];
+				await interaction.reply(`You selected ${selected}!`)
+			} else {
+				console.log(`[WARNING]: No string select menu interaction handler exists for ${customId}`)
 			}
 
 			// MODAL SUBMIT COMMANDS
