@@ -1,7 +1,8 @@
 import {
 	Events,
 	BaseInteraction,
-	ButtonInteraction
+	ButtonInteraction,
+	ModalSubmitInteraction
 } from "discord.js";
 import ExtendedClient from "types/ExtendedClient";
 
@@ -23,6 +24,7 @@ module.exports = {
 				console.error(`Error executing ${interaction.commandName}`);
 				console.error(error);
 			}
+
 			// BUTTON COMMANDS
 		} else if (interaction.isButton()) {
 			const customId = (interaction as ButtonInteraction).customId;
@@ -33,6 +35,24 @@ module.exports = {
 			} else {
 				console.log(`[WARNING]: No button interaction handler exists for ${customId}`)
 			}
+
+			// MODAL SUBMIT COMMANDS
+		} else if (interaction.isModalSubmit()) {
+			const customId = (interaction as ModalSubmitInteraction).customId;
+
+			// Branch on modal's customId
+			if (customId == 'mymodal') {
+				const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
+				const hobbies = interaction.fields.getTextInputValue('hobbiesInput');
+				interaction.reply({
+					content: `You entered: ${favoriteColor}\n and ${hobbies}`,
+					ephemeral: true
+				})
+			} else {
+				console.log(`[WARNING]: No modal submit interaction handler exists for ${customId}`)
+			}
+
+			// No interaction matches
 		} else {
 			return;
 		}
