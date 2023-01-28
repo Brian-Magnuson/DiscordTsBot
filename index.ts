@@ -14,8 +14,8 @@ require('dotenv').config();
 // Create a new client instance
 const client = new ExtendedClient({ intents: [GatewayIntentBits.Guilds] });
 
+// ADD ALL THE COMMANDS
 client.commands = new Collection();
-
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = (fs.readdirSync(commandsPath) as string[]).filter(file => file.endsWith('.ts'));
 // For each file...
@@ -27,6 +27,7 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
+// ADD ALL THE EVENTS
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.ts'));
 // For each file...
