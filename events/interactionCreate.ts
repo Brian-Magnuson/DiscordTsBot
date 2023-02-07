@@ -44,7 +44,7 @@ module.exports = {
 			// Branch on menu's customId
 			if (customId == 'select') {
 				const selected = interaction.values[0];
-				await interaction.reply(`You selected ${selected}!`)
+				interaction.reply(`You selected ${selected}!`)
 			} else {
 				console.log(`[WARNING]: No string select menu interaction handler exists for ${customId}`)
 			}
