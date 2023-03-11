@@ -4,7 +4,7 @@ import {
   Collection,
   CommandInteraction
 } from 'discord.js';
-import Command from './Command';
+import Command from './command';
 
 export default class ExtendedClient extends Client<true> {
 

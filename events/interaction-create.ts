@@ -11,7 +11,7 @@ import {
 	ModalSubmitInteraction,
 	StringSelectMenuInteraction
 } from "discord.js";
-import ExtendedClient from "types/ExtendedClient";
+import ExtendedClient from "types/extended-client";
 
 module.exports = {
 	name: Events.InteractionCreate,

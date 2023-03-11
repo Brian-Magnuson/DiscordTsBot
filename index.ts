@@ -11,8 +11,8 @@ import {
   GatewayIntentBits,
   Collection
 } from 'discord.js'
-import ExtendedClient from './types/ExtendedClient';
-import Command from './types/Command';
+import ExtendedClient from './types/extended-client';
+import Command from './types/command';
 import * as fs from 'fs';
 import * as path from 'path';
 require('dotenv').config();
